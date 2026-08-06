@@ -1,0 +1,57 @@
+﻿.action-btn {
+    margin-right: 8px;
+}
+
+    .action-btn:last-child {
+        margin-right: 0;
+    }
+
+
+.form-label {
+    font-weight: 600;
+}
+
+
+.card-header h4 {
+    margin-bottom: 0;
+}
+
+.priority-header {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+.list-header {
+    background-color: #343a40;
+    color: white;
+}
+
+.priority-table-header th {
+    background-color: #cfe2ff !important;
+    color: #000 !important;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.table td {
+    vertical-align: middle;
+}
+
+
+#Description {
+    width: 100%;
+}
+
+
+#btnSave {
+    margin-right: 10px;
+}

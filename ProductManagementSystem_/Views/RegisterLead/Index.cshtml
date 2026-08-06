@@ -1,0 +1,522 @@
+﻿@model ProductManagementSystem_.ViewModels.RegisterLeadViewModel
+
+@{
+    ViewBag.Title = "Register Lead";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div id="registerLeadFormCard">
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Register Lead</h4>
+            </div>
+
+            <div class="card-body">
+
+                @Html.HiddenFor(x => x.RegisterLead.LeadId, new { id = "LeadId" })
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <label class="form-label">Date</label>
+
+                        @Html.TextBoxFor(
+                            x => x.RegisterLead.LeadDate,
+                            "{0:yyyy-MM-dd}",
+                            new
+                            {
+                                @class = "form-control",
+                                type = "date",
+                                id = "LeadDate",
+                                @readonly = "readonly"
+                            })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Category</label>
+
+                        @Html.DropDownListFor(
+                            x => x.RegisterLead.CategoryId,
+                            new SelectList(
+                                Model.Categories ?? new List<ProductManagementSystem_.Models.Category>(),
+                                "CategoryId",
+                                "CategoryName"
+                            ),
+                            "--Select Category--",
+                            new { @class = "form-select", id = "CategoryId" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Company</label>
+
+                        @Html.DropDownListFor(
+                            x => x.RegisterLead.CompanyId,
+                            new SelectList(
+                                Model.Companies ?? new List<ProductManagementSystem_.Models.Company>(),
+                                "CompanyId",
+                                "CompanyName"
+                            ),
+                            "--Select Company--",
+                            new { @class = "form-select", id = "CompanyId" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Product</label>
+
+                        @Html.DropDownListFor(
+                            x => x.RegisterLead.ProductId,
+                            new SelectList(
+                                Model.Products ?? new List<ProductManagementSystem_.Models.Product>(),
+                                "ProductId",
+                                "ProductName"
+                            ),
+                            "--Select Product--",
+                            new { @class = "form-select", id = "ProductId" })
+                    </div>
+
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col-md-3">
+                        <label class="form-label">Case Type</label>
+
+                        @Html.DropDownListFor(
+                            x => x.RegisterLead.CaseType,
+                            new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Fresh", Value = "Fresh" },
+                                new SelectListItem { Text = "Port", Value = "Port" },
+                                new SelectListItem { Text = "Revenue", Value = "Revenue" },
+                                new SelectListItem { Text = "Partner", Value = "Partner" }
+                            },
+                            "--Select Case Type--",
+                            new { @class = "form-select", id = "CaseType" })
+                    </div>
+
+                    <div class="col-md-3 portFields" style="display:none;">
+                        <label class="form-label">Existing Company</label>
+                        <input type="text" id="ExistingCompany" name="RegisterLead.ExistingCompany"
+                               class="form-control" placeholder="Enter Existing Company" />
+                    </div>
+
+                    <div class="col-md-3 portFields" style="display:none;">
+                        <label class="form-label">Policy No</label>
+                        <input type="text" id="PolicyNo" name="RegisterLead.PolicyNo"
+                               class="form-control" placeholder="Enter Policy No" />
+                    </div>
+
+                    <div class="col-md-3 portFields" style="display:none;">
+                        <label class="form-label">Amount</label>
+                        <input type="number" id="Amount" name="RegisterLead.Amount"
+                               class="form-control" placeholder="Enter Amount" />
+                    </div>
+
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col-md-3">
+                        <label class="form-label">Client Type</label>
+
+                        @Html.DropDownListFor(
+                            x => x.RegisterLead.ClientType,
+                            new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Individual", Value = "Individual" },
+                                new SelectListItem { Text = "Company", Value = "Company" }
+                            },
+                            "--Select Client Type--",
+                            new { @class = "form-select", id = "ClientType" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label" id="clientNameLabel">Name</label>
+
+                        @Html.TextBoxFor(
+                            x => x.RegisterLead.Name,
+                            new { @class = "form-control", id = "Name", placeholder = "Enter Name" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Contact No</label>
+
+                        @Html.TextBoxFor(
+                            x => x.RegisterLead.ContactNo,
+                            new
+                            {
+                                @class = "form-control",
+                                id = "ContactNo",
+                                maxlength = "10",
+                                placeholder = "Enter Contact Number"
+                            })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Email</label>
+
+                        @Html.TextBoxFor(
+                            x => x.RegisterLead.EmailId,
+                            new { @class = "form-control", id = "EmailId", placeholder = "Enter Email Address" })
+                    </div>
+
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col-md-3">
+                        <label class="form-label">Address</label>
+
+                        @Html.TextAreaFor(
+                            x => x.RegisterLead.Address,
+                            new { @class = "form-control", id = "Address", rows = "1", placeholder = "Enter Address" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Country <span class="text-danger">*</span></label>
+                        <select id="CountryId" name="RegisterLead.CountryId" class="form-select">
+                            <option value="">-- Select Country --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">State <span class="text-danger">*</span></label>
+                        <select id="StateId" name="RegisterLead.StateId" class="form-select">
+                            <option value="">-- Select State --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">City <span class="text-danger">*</span></label>
+                        <select id="CityId" name="RegisterLead.CityId" class="form-select">
+                            <option value="">-- Select City --</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col-md-3">
+                        <label class="form-label">Pincode</label>
+
+                        @Html.TextBoxFor(
+                            x => x.RegisterLead.Pincode,
+                            new
+                            {
+                                @class = "form-control",
+                                id = "Pincode",
+                                maxlength = "6",
+                                placeholder = "Enter Pincode"
+                            })
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card shadow mt-4">
+
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Dispositions</h4>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label class="form-label">Status</label>
+
+                        @Html.DropDownListFor(
+                            x => x.RegisterLead.Status,
+                            new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Open", Value = "Open" },
+                                new SelectListItem { Text = "Close", Value = "Close" }
+                            },
+                            "--Select Status--",
+                            new { @class = "form-select", id = "Status" })
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Priority</label>
+
+                        @Html.DropDownListFor(
+                            m => m.RegisterLead.PriorityId,
+                            new SelectList(
+                                Model.Priorities ?? new List<ProductManagementSystem_.Models.Priority>(),
+                                "PriorityId",
+                                "PriorityName"
+                            ),
+                            "--Select Priority--",
+                            new { @class = "form-select", id = "PriorityId" })
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Disposition</label>
+
+                        @Html.DropDownListFor(
+                            m => m.RegisterLead.DispositionId,
+                            new SelectList(
+                                Model.Dispositions ?? new List<ProductManagementSystem_.Models.Disposition>(),
+                                "DispositionId",
+                                "DispositionName"
+                            ),
+                            "--Select Disposition--",
+                            new { @class = "form-select", id = "DispositionId" })
+                    </div>
+
+                </div>
+
+                <div class="row visitFields" style="display:none;">
+
+                    <div class="col-md-4">
+                        <label>Visit Date</label>
+                        <input type="date" id="VisitDate" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Visit Time</label>
+                        <select id="VisitTime" class="form-control">
+                            <option value="">--Select Time--</option>
+                            <option>09:00 AM</option>
+                            <option>10:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>12:00 PM</option>
+                            <option>01:00 PM</option>
+                            <option>02:00 PM</option>
+                            <option>03:00 PM</option>
+                            <option>04:00 PM</option>
+                            <option>05:00 PM</option>
+                            <option>06:00 PM</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 fixedField" style="display:none;">
+                        <label>Fixed</label>
+                        <select id="Fixed" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row mt-3">
+
+                    <div class="col-md-12">
+                        <label class="form-label">Remarks</label>
+                        <textarea id="Remarks" name="RegisterLead.Remarks" class="form-control"
+                                  rows="3" placeholder="Enter Remarks">@Model.RegisterLead.Remarks</textarea>
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-md-12 text-center">
+
+                        <button type="button" id="btnSave" class="btn btn-success me-2">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <button type="button" id="btnReset" class="btn btn-secondary">
+                            <i class="fa fa-refresh"></i> Reset
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow mt-4" id="registerLeadListCard">
+
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Register Lead List</h5>
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover table-striped"
+                       id="tblRegisterLead"
+                       style="width:100%;">
+
+                    <thead class="table-light-blue">
+                        <tr>
+                            <th>SN</th>
+                            <th>Date</th>
+                            <th>Company</th>
+                            <th>Product</th>
+                            <th>Contact No</th>
+                            <th>Visit</th>
+                            <th>Remarks</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="ViewLeadModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Register Lead Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body" id="ViewLeadBody"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    <script src="~/Scripts/RegisterLead.js"></script>
+}
+
+<style>
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .form-control,
+    .form-select {
+        height: 38px;
+        border-radius: 4px;
+    }
+
+    #Address {
+        height: 38px;
+        resize: none;
+        overflow: hidden;
+    }
+
+    #Remarks {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 40px;
+        display: block;
+        box-sizing: border-box;
+        resize: none !important;
+    }
+
+    textarea.form-control {
+        width: 100%;
+    }
+
+    .card {
+        border-radius: 8px;
+    }
+
+    .card-header h4,
+    .card-header h5 {
+        margin-bottom: 0;
+    }
+
+    #btnSave,
+    #btnReset {
+        width: 110px;
+        margin: 0 5px;
+    }
+
+    .table-light-blue {
+        background-color: #add8e6 !important;
+    }
+
+    #tblRegisterLead thead th,
+    table.dataTable thead th {
+        background-color: #add8e6 !important;
+        color: #000;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+        font-weight: 600;
+    }
+
+    #tblRegisterLead td:last-child {
+        white-space: nowrap;
+        text-align: center;
+    }
+
+        #tblRegisterLead td:last-child a {
+            display: inline-block;
+            margin: 0 6px;
+            text-decoration: none;
+        }
+
+        #tblRegisterLead td:last-child i {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+    .action-btn {
+        margin: 0 6px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+
+    #tblRegisterLead th:nth-child(1),
+    #tblRegisterLead td:nth-child(1) {
+        width: 60px !important;
+        text-align: center;
+    }
+
+    #tblRegisterLead th:nth-child(2),
+    #tblRegisterLead td:nth-child(2) {
+        width: 120px !important;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .portFields {
+        display: none;
+    }
+
+    #divCompany {
+        display: none;
+    }
+
+    @@media(max-width:768px) {
+
+        #btnSave,
+        #btnReset {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+</style>

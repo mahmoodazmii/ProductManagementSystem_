@@ -1,0 +1,147 @@
+﻿@model ProductManagementSystem_.ViewModels.PriorityViewModel
+
+@{
+    ViewBag.Title = "Priority Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="card shadow-sm mb-3">
+
+        <div class="card-header priority-header">
+            <h4 class="mb-0"> Priority Master </h4>
+        </div>
+
+        <div class="card-body">
+
+            @Html.HiddenFor(m => m.Priority.PriorityId, new { id = "PriorityId" })
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label font-weight-bold">
+                        Priority Name <span class="text-danger">*</span>
+                    </label>
+
+                    @Html.TextBoxFor(m => m.Priority.PriorityName,
+                    new
+                    {
+                        @class = "form-control",
+                        id = "PriorityName",
+                        maxlength = "100",
+                        autocomplete = "off",
+                        placeholder = "Enter Priority Name"
+                    })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label font-weight-bold">
+                        Priority Code <span class="text-danger">*</span>
+                    </label>
+
+                    @Html.TextBoxFor(m => m.Priority.PriorityCode,
+                    new
+                    {
+                        @class = "form-control",
+                        id = "PriorityCode",
+                        maxlength = "20",
+                        autocomplete = "off",
+                        placeholder = "Enter Priority Code"
+                    })
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label font-weight-bold">
+                        Description
+                    </label>
+
+                    @Html.TextBoxFor(m => m.Priority.Description,
+                    new
+                    {
+                        @class = "form-control",
+                        id = "Description",
+                        maxlength = "500",
+                        autocomplete = "off",
+                        placeholder = "Enter Description"
+                    })
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label font-weight-bold invisible">
+                        Buttons
+                    </label>
+
+                    <div>
+                        <button type="button"
+                                id="btnSave"
+                                class="btn btn-success mr-2">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+
+                        <button type="button"
+                                id="btnReset"
+                                class="btn btn-secondary">
+                            <i class="fa fa-refresh"></i> Reset
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-header list-header">
+            <h4 class="mb-0"> Priority List </h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table id="tblPriority" class="table table-bordered table-hover table-striped text-center w-100">
+
+                    <thead>
+                        <tr class="priority-table-header">
+
+                            <th style="width:70px;">SN</th>
+                            <th>Priority Name</th>
+                            <th>Priority Code</th>
+                            <th>Description</th>
+                            <th style="width:180px;" class="text-center">
+                                Action
+                            </th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+    <script src="~/Scripts/Priority.js"></script>
+    <link href="~/Site/CSS/Priority.css" rel="stylesheet" />
+
+}

@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Category Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div id="categoryFormCard">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Category Master</h4>
+            </div>
+
+            <div class="card-body">
+
+                <input type="hidden" id="CategoryId" value="0" />
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label>Category Name</label>
+                        <input type="text"
+                               id="CategoryName"
+                               class="form-control"
+                               placeholder="Enter Category Name" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Description</label>
+                        <textarea id="Description"
+                                  class="form-control"
+                                  placeholder="Enter Description"></textarea>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Status</label>
+                        <select id="Status" class="form-select">
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-3">
+
+                    <button id="btnSave" class="btn btn-success">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+
+                    <button id="btnReset" class="btn btn-secondary">
+                        <i class="fa fa-refresh"></i> Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow" id="categoryListCard">
+
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Category List</h5>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover table-striped text-center" id="tblCategory">
+
+                <thead class="table-primary">
+                    <tr>
+                        <th style="width:70px;">ID</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th style="width:100px;">Status</th>
+                        <th style="width:220px;">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Category.js"></script>
+    <link href="~/Site/CSS/Category.css" rel="stylesheet" />
+}

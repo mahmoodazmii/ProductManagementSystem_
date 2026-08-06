@@ -1,0 +1,32 @@
+﻿#categoryFormCard {
+    width: 100%;
+}
+
+    #categoryFormCard .card {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    #categoryFormCard .card-body {
+        width: 100%;
+    }
+
+    #categoryFormCard label {
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    #categoryFormCard .form-control,
+    #categoryFormCard .form-select {
+        width: 100%;
+    }
+
+#categoryListCard {
+    margin-top: 25px;
+}
+
+#categoryFormCard textarea {
+    height: 38px;
+    min-height: 38px;
+    resize: vertical;
+}

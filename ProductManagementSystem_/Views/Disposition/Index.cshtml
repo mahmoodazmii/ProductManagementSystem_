@@ -1,0 +1,172 @@
+﻿@model ProductManagementSystem_.ViewModels.DispositionViewModel
+
+@{
+    ViewBag.Title = "Disposition Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="card shadow mb-4">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Disposition Master</h4>
+        </div>
+
+        <div class="card-body">
+
+            @Html.HiddenFor(m => m.Disposition.DispositionId, new { id = "DispositionId" })
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">
+                        Disposition <span class="text-danger">*</span>
+                    </label>
+
+                    @Html.TextBoxFor(m => m.Disposition.DispositionName,
+                    new
+                    {
+                        @class = "form-control",
+                        id = "DispositionName",
+                        placeholder = "Enter Disposition"
+                    })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">
+                        Short Code <span class="text-danger">*</span>
+                    </label>
+
+                    @Html.TextBoxFor(m => m.Disposition.ShortCode,
+                    new
+                    {
+                        @class = "form-control",
+                        id = "ShortCode",
+                        placeholder = "Enter Short Code"
+                    })
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">
+                        Sort Order
+                    </label>
+
+                    @Html.TextBoxFor(m => m.Disposition.SortOrder,
+                    new
+                    {
+                        @class = "form-control",
+                        id = "SortOrder",
+                        type = "number",
+                        placeholder = "Enter Sort Order"
+                    })
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">
+                        Date Required
+                    </label>
+
+                    @Html.DropDownListFor(m => m.Disposition.DateRequired,
+
+                    new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="Yes",Value="true"},
+                        new SelectListItem{Text="No",Value="false"}
+                    },
+
+                    "--Select--",
+
+                    new
+                    {
+                        @class = "form-control",
+                        id = "DateRequired"
+                    })
+
+                </div>
+
+            </div>
+
+            <div class="text-center mt-3">
+
+                <button type="button"
+                        id="btnSave"
+                        class="btn btn-success px-4">
+
+                    Save
+
+                </button>
+
+                <button type="button"
+                        id="btnReset"
+                        class="btn btn-secondary px-4 ml-2">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+
+            <h4 class="mb-0">
+                Disposition List
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped"
+                       id="tblDisposition">
+
+                    <thead class="table-primary text-center">
+
+                        <tr>
+
+                            <th>SN</th>
+
+                            <th>Disposition</th>
+
+                            <th>Short Code</th>
+
+                            <th>Sort Order</th>
+
+                            <th>Date Required</th>
+
+                            <th width="200">Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/Disposition.js"></script>
+    <link href="~/Site/CSS/Disposition.css" rel="stylesheet" />
+}

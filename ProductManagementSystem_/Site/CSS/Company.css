@@ -1,0 +1,63 @@
+﻿#companyFormCard {
+    width: 100%;
+}
+
+    #companyFormCard .card {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    #companyFormCard .card-body {
+        width: 100%;
+    }
+
+    #companyFormCard label {
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    #companyFormCard .row {
+        margin-bottom: 18px;
+    }
+
+    #companyFormCard .form-control,
+    #companyFormCard .form-select {
+        width: 100%;
+    }
+
+    #companyFormCard textarea {
+        resize: vertical;
+        height: 38px;
+        min-height: 38px;
+    }
+
+#logoContainer {
+    display: none;
+    margin-top: 10px;
+}
+
+#CompanyLogoPreview {
+    width: 150px;
+    height: 120px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+#btnDeleteLogo {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+#companyListCard {
+    margin-top: 25px;
+}
+
+.col-description {
+    margin-left: -165px;
+}

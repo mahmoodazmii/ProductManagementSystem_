@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "UserName": "admin",
+    "FullName": "Admin",
+    "Email": "admin@example.com",
+    "PasswordHash": "S4OdmrRmaZkfxNhUC9LCTmVGnNB0k38FDXTLxaK9400=",
+    "PasswordSalt": "P9camgZCS3L2BULbqp6EdA==",
+    "IsActive": true,
+    "CreatedAt": "2026-07-20T16:01:25.0495497+05:30"
+  }
+]

@@ -1,0 +1,315 @@
+﻿@model ProductManagementSystem_.ViewModels.ProductVM
+
+@{
+    ViewBag.Title = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div id="productFormCard">
+
+        <div class="card">
+
+            <div class="card-header bg-primary text-white"> Product Master </div>
+
+            <div class="card-body">
+
+                <input type="hidden" id="ProductId" value="0" />
+
+                <div class="row g-3">
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> Category </label>
+
+                        <select id="CategoryId"class="form-select">
+                            <option value="">  -- Select Category --  </option>
+
+                            @foreach (var item in Model.Categories)
+                            {
+
+                                <option value="@item.CategoryId">
+
+                                    @item.CategoryName
+
+                                </option>
+
+                            }
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <label> Company </label>
+
+                        <select id="CompanyId" class="form-select">
+                            <option value="">  -- Select Company -- </option>
+
+                            @foreach (var item in Model.Companies)
+                            {
+
+                                <option value="@item.CompanyId">
+
+                                    @item.CompanyName
+
+                                </option>
+
+                            }
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label>  Product Name </label>
+                        <input type="text" id="ProductName" class="form-control" placeholder="Enter Product Name" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> Product Code </label>
+
+                        <input type="text" id="ProductCode" class="form-control" placeholder="Enter Product Code" />
+
+                    </div>
+
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-3">
+                        <label>Description</label>
+                        <textarea id="Description"
+                                  name="Product.Description"
+                                  class="form-control desc-box"
+                                  placeholder="Enter Description"></textarea>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> Scheme Offer </label>
+
+                        <input type="text" id="SchemeOffer" class="form-control" placeholder="Enter Scheme Offer" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> MRP </label>
+
+                        <input type="number" id="MRP" class="form-control" placeholder="Enter MRP" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> Offer </label>
+
+                        <input type="number" id="Offer" class="form-control" placeholder="Enter Offer" />
+
+                    </div>
+
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-lg-3 col-md-6">
+                       <label> Cost Price </label>
+
+                        <input type="number" id="CostPrice" class="form-control" placeholder="Enter Cost Price" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <label> Sale Price </label>
+
+                        <input type="number" id="SalePrice" class="form-control" placeholder="Enter Sale Price" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> Profit </label>
+
+                        <input type="number" id="Profit" class="form-control bg-light" readonly placeholder="Profit" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                       <label> BP Rate (%) </label>
+
+                       <input type="number" id="BPRate" class="form-control" placeholder="Enter BP Rate (%)" />
+
+                    </div>
+
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <label> BP Commission </label>
+                        <input type="number" id="BPCommission" class="form-control bg-light" readonly placeholder="BP Commission" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <label> Tax (%) </label>
+
+                        <input type="number" id="Tax" class="form-control" placeholder="Enter Tax" />
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="form-group">
+
+                            <label class="fw-bold">
+                                Upload Product Images
+                            </label>
+
+                            <input type="file"
+                                   id="Images"
+                                   name="Images"
+                                   class="form-control"
+                                   multiple
+                                   accept=".jpg,.jpeg,.png" />
+
+                            <div id="ImagePreview" class="preview-container mt-2">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="form-group">
+
+                            <label class="fw-bold">
+                                Upload Product PDF
+                            </label>
+
+                            <input type="file"
+                                   id="PdfFiles"
+                                   name="PdfFiles"
+                                   class="form-control"
+                                   multiple
+                                   accept=".pdf" />
+
+                            <div id="PdfPreview" class="pdf-preview-container mt-2">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row g-3 align-items-end">
+
+                    <div class="col-lg-3 col-md-6"> <label> Status </label>
+
+                        <select id="Status" class="form-select"> <option value="true"> Active </option>
+
+                            <option value="false"> Inactive </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-6">
+
+                        <div class="form-action-area">
+
+                            <button id="btnSave" class="btn btn-success"> <i class="fa fa-save"></i> Save </button>
+
+                            <button id="btnReset" class="btn btn-secondary"> <i class="fa fa-refresh"></i> Reset </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow" id="productListCard">
+
+        <div class="card-header bg-dark text-white"> <h5 class="mb-0"> Product List </h5> </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table id="tblProduct" class="table table-bordered table-hover table-striped text-center">
+
+                    <thead class="table-primary">
+
+                        <tr>
+                            <th style="width:60px;"> ID </th>
+
+                            <th> Category </th>
+                            <th> Company </th>
+                            <th> Product Name </th>
+                            <th> Product Code </th>
+                            <th> Scheme Offer </th>
+                            <th> MRP </th>
+                            <th> Offer </th>
+                            <th> Cost Price </th>
+                            <th> Sale Price </th>
+                            <th> Profit </th>
+                            <th> BP Rate </th>
+                            <th> BP Commission </th>
+                            <th> Tax </th>
+                            <th style="width:150px;"> Action </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="descriptionModal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h5 class="modal-title"> Product Description </h5>
+
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"> </button>
+
+            </div>
+
+            <div class="modal-body" id="descriptionModalBody" style="white-space:pre-wrap;"> </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+    <script src="~/Scripts/Product.js"></script>
+
+    <link href="~/Site/CSS/Product.css" rel="stylesheet" />
+}

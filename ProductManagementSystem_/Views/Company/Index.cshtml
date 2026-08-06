@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "Company Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div id="companyFormCard">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-primary text-white">
+
+                <h4 class="mb-0">Company Master</h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <input type="hidden" id="CompanyId" value="0" />
+
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <label>Company Name</label>
+
+                        <input type="text"
+                               id="CompanyName"
+                               class="form-control"
+                               placeholder="Enter Company Name" />
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label>Company Code</label>
+
+                        <input type="text"
+                               id="CompanyCode"
+                               class="form-control"
+                               placeholder="Enter Company Code" />
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label>Status</label>
+
+                        <select id="Status" class="form-select">
+
+                            <option value="true">Active</option>
+
+                            <option value="false">Inactive</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <label>Logo</label>
+
+                        <input type="file"
+                               id="CompanyLogo"
+                               class="form-control"
+                               accept="image/*" />
+
+                        <div id="logoContainer">
+
+                            <a id="CompanyLogoLink" href="#" target="_blank">
+                                <img id="CompanyLogoPreview"
+                                     class="img-thumbnail" />
+                            </a>
+
+                            <button type="button"
+                                    id="btnDeleteLogo"
+                                    class="btn btn-danger btn-sm">
+                                <i class="fa fa-times"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-description">
+
+                        <label>Description</label>
+
+                        <textarea id="Description"
+                                  class="form-control"
+                                  placeholder="Enter Company Description"></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    <button id="btnSave" class="btn btn-success">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+
+                    <button id="btnReset" class="btn btn-secondary">
+                        <i class="fa fa-refresh"></i> Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow" id="companyListCard">
+
+        <div class="card-header bg-dark text-white">
+
+            <h5 class="mb-0">Company List</h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover table-striped text-center"
+                   id="tblCompany">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th style="width:70px;">ID</th>
+
+                        <th>Company Name</th>
+
+                        <th>Company Code</th>
+
+                        <th style="width:150px;">Logo</th>
+
+                        <th>Description</th>
+
+                        <th style="width:90px;">Status</th>
+
+                        <th style="width:220px;">Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/Company.js"></script>
+    <link href="~/Site/CSS/Company.css" rel="stylesheet" />
+}

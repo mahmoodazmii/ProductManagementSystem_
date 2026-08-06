@@ -1,0 +1,203 @@
+﻿@model ProductManagementSystem_.ViewModels.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="row align-items-center justify-content-center"
+         style="min-height:90vh;">
+
+        <div class="col-lg-6 text-center mb-5 mb-lg-0">
+
+            <img src="~/Content/Images/pms-logo.png"
+                 class="img-fluid"
+                 style="max-width:500px; margin-top:30px;"
+                 alt="PMS Logo" />
+
+        </div>
+
+        <div class="col-lg-5 col-md-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-center mb-4">
+                        Create Account
+                    </h3>
+
+                    @Html.ValidationSummary(
+                        true,
+                        "",
+                        new { @class = "text-danger mb-3" }
+                    )
+
+                    @using (Html.BeginForm(
+                        "Register",
+                        "Account",
+                        FormMethod.Post,
+                        new { autocomplete = "off" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                @Html.LabelFor(
+                                    x => x.FullName,
+                                    new { @class = "form-label" })
+
+                                @Html.TextBoxFor(
+                                    x => x.FullName,
+                                    new
+                                    {
+                                        @class = "form-control",
+                                        placeholder = "Enter Full Name"
+                                    })
+
+                                @Html.ValidationMessageFor(
+                                    x => x.FullName,
+                                    "",
+                                    new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                @Html.LabelFor(
+                                    x => x.UserName,
+                                    new { @class = "form-label" })
+
+                                @Html.TextBoxFor(
+                                    x => x.UserName,
+                                    new
+                                    {
+                                        @class = "form-control",
+                                        placeholder = "Enter Username"
+                                    })
+
+                                @Html.ValidationMessageFor(
+                                    x => x.UserName,
+                                    "",
+                                    new { @class = "text-danger" })
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                @Html.LabelFor(
+                                    x => x.Email,
+                                    new { @class = "form-label" })
+
+                                @Html.TextBoxFor(
+                                    x => x.Email,
+                                    new
+                                    {
+                                        @class = "form-control",
+                                        placeholder = "Enter Email"
+                                    })
+
+                                @Html.ValidationMessageFor(
+                                    x => x.Email,
+                                    "",
+                                    new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                @Html.LabelFor(
+                                    x => x.Password,
+                                    new { @class = "form-label" })
+
+                                @Html.PasswordFor(
+                                    x => x.Password,
+                                    new
+                                    {
+                                        @class = "form-control",
+                                        placeholder = "Enter Password"
+                                    })
+
+                                @Html.ValidationMessageFor(
+                                    x => x.Password,
+                                    "",
+                                    new { @class = "text-danger" })
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-12">
+
+                                <div class="mb-3">
+
+                                    @Html.LabelFor(
+                                        x => x.ConfirmPassword,
+                                        new { @class = "form-label" })
+
+                                    @Html.PasswordFor(
+                                        x => x.ConfirmPassword,
+                                        new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "Confirm Password"
+                                        })
+
+                                    @Html.ValidationMessageFor(
+                                        x => x.ConfirmPassword,
+                                        "",
+                                        new { @class = "text-danger" })
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+
+                            Register
+
+                        </button>
+
+                        <hr />
+
+                        <div class="text-center">
+
+                            Already have an account?
+
+                            <a href="@Url.Action("Login","Account")">
+
+                                Login
+
+                            </a>
+
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

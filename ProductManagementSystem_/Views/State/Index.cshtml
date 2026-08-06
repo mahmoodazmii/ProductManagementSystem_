@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "State Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid mt-3">
+
+    <div class="card shadow-sm mb-3">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4 class="mb-0">
+                State Master
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <input type="hidden" id="StateId" value="0" />
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <label>
+                        <b>Country</b>
+                    </label>
+
+                    <select id="CountryId"
+                            class="form-control">
+
+                        <option value="">
+                            -- Select Country --
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label>
+                        <b>State Name</b>
+                    </label>
+
+                    <input type="text"
+                           id="StateName"
+                           class="form-control"
+                           placeholder="Enter State Name" />
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <label>
+                        <b>Status</b>
+                    </label>
+
+                    <select id="Status"
+                            class="form-control">
+
+                        <option value="A">
+                            Active
+                        </option>
+
+                        <option value="D">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="col-12 text-center">
+
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-success mr-2">
+
+                        <i class="fa fa-save"></i>
+                        Save
+
+                    </button>
+
+                    <button type="button"
+                            id="btnReset"
+                            class="btn btn-secondary">
+
+                        <i class="fa fa-refresh"></i>
+                        Reset
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-header state-list-header">
+
+            <h5 class="mb-0">
+                State List
+            </h5>
+
+        </div>
+
+        <div class="card-body p-0">
+
+            <table id="tblState"
+                   class="table table-bordered table-hover text-center mb-0">
+
+                <thead>
+
+                    <tr class="text-center">
+
+                        <th style="width:8%">
+                            Id
+                        </th>
+
+                        <th style="width:25%">
+                            Country
+                        </th>
+
+                        <th>
+                            State Name
+                        </th>
+
+                        <th style="width:15%">
+                            Status
+                        </th>
+
+                        <th style="width:10%">
+                            Edit
+                        </th>
+
+                        <th style="width:10%">
+                            Delete
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .state-list-header {
+        background-color: #add8e6 !important;
+        color: #000 !important;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    #tblState thead th {
+        background: #343a40;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #tblState tbody td {
+        vertical-align: middle;
+    }
+
+    #btnSave,
+    #btnReset {
+        min-width: 120px;
+    }
+
+    .btn {
+        margin: 0 5px;
+    }
+</style>
+
+@section scripts{
+
+    <script src="~/Scripts/State.js"></script>
+
+}
